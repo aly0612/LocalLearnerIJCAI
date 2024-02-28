@@ -8,7 +8,7 @@ public class Algoritmo1 {
 	Search2 sc;
 	Avaliador ava;
 	long tempo_ini;
-
+        Node_LS lastOptimizedStrategy;
 
 	
 	
@@ -40,10 +40,17 @@ public class Algoritmo1 {
 			
 			if(r0>r1)ava.update(gs, max, c0);
 			
+                        lastOptimizedStrategy = c0;
+                        
 		}
 		
 		
 	}
+        
+        public Node_LS getLastOptimizedStrategy()
+        {
+            return lastOptimizedStrategy;
+        }
 
 
 	

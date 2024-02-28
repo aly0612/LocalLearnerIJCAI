@@ -4,7 +4,6 @@
  */
 package ai.ScriptsGenerator.Command;
 
-import util.SOA.*;
 import ai.PassiveAI;
 import ai.RandomBiasedAI;
 import ai.CMAB.A3NNoWait;

@@ -6,6 +6,7 @@ package tests;
 
 import ai.core.AI;
 import ai.*;
+import ai.abstraction.HeavyRush;
 import ai.abstraction.LightRush;
 import ai.abstraction.WorkerRush;
 import ai.abstraction.pathfinding.BFSPathFinding;
@@ -19,6 +20,7 @@ import ai.scv.SCV;
 import gui.PhysicalGameStatePanel;
 import java.io.OutputStreamWriter;
 import javax.swing.JFrame;
+import mybot.MyBot;
 import rts.GameState;
 import rts.PhysicalGameState;
 import rts.PlayerAction;
@@ -40,7 +42,7 @@ public class GameVisualSimulationTest {
         int PERIOD = 20;
         boolean gameover = false;
         
-        AI ai2 = new botEmptyBase(utt, "for(u) (if(HaveUnitsinEnemyRange(Worker,u)) (attack(Worker,closest,u)) (harvest(1,u)) train(Worker,4,EnemyDir)) if(HaveUnitsToDistantToEnemy(Worker,1)) (attack(Worker,closest)) (attack(Worker,closest)) for(u) (if(HaveUnitsinEnemyRange(Worker,u)) (train(Worker,19,Down)))","Player44");
+        AI ai2 = new MyBot(utt);
         //AI ai1 = new PGSmRTS(utt);
         //AI ai2 = new Droplet(utt);        
         AI ai1 = new LightRush(utt);
