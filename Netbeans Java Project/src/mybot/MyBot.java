@@ -7,11 +7,11 @@ package mybot;
 import ai.core.AI;
 import ai.core.AIWithComputationBudget;
 import ai.core.ParameterSpecification;
-import ai.synthesis.ComplexDSL.IAs2.Algoritmo1;
-import ai.synthesis.ComplexDSL.IAs2.AvaliadorPadrao;
-import ai.synthesis.ComplexDSL.IAs2.HC;
+import ai.synthesis.ComplexDSL.LS_CFG.FactoryLS;
 import ai.synthesis.ComplexDSL.LS_CFG.Node_LS;
 import ai.synthesis.ComplexDSL.Synthesis_Base.AIs.Interpreter;
+import ai.synthesis.ComplexDSL.Synthesis_Base.CFG.Control;
+import ai.synthesis.ComplexDSL.Synthesis_Base.CFG.Node;
 import java.util.ArrayList;
 import java.util.List;
 import rts.GameState;
@@ -23,19 +23,23 @@ import rts.units.UnitTypeTable;
  */
 public class MyBot extends AIWithComputationBudget {
         
-    private Algoritmo1 algorithm;
-    private Interpreter interpreter;
-    
-    
     UnitTypeTable m_utt = null;
+    Interpreter strategyInterpreter;
     
-    public MyBot(UnitTypeTable utt) {
+    public MyBot(UnitTypeTable utt) {    
         
     super(-1, -1);
-    m_utt = utt; // Initialize m_utt first
-    this.algorithm = new Algoritmo1(new HC(2000), new AvaliadorPadrao(1));
-    this.interpreter = new Interpreter(m_utt); 
-
+    this.m_utt = utt;
+    FactoryLS f = new FactoryLS();
+    Node_LS node = (Node_LS) Control.load("S;For_S;S;S_S;S;S_S;S;C;Train;Worker;Right;2;S;C;Idle;S;S_S;S;S_S;S;C;Harvest;10;S;S_S;S;For_S;S;C;Idle;S;S_S;S;S_S;S;C;Train;Heavy;Down;7;S;If_B_then_S;B;HasUnitInOpponentRange;S;S_S;S;"
+                + "S_S;S;C;MoveToUnit;Enemy;MostHealthy;S;S_S;S;S_S;S;For_S;S;S_S;S;C;Harvest;1;S;S_S;S;C;Train;Light;EnemyDir;2;S;C;Train;Worker;"
+                + "Right;2;S;C;Attack;Farthest;S;C;MoveToUnit;Enemy;Closest;S;S_S;S;S_S;S;For_S;S;If_B_then_S;B;HasNumberOfWorkersHarvesting;100;S;C;MoveToUnit;"
+                + "Ally;Closest;S;S_S;S;For_S;S;S_S;S;C;MoveToUnit;Enemy;LessHealthy;S;S_S;S;C;MoveToUnit;Ally;LessHealthy;S;C;MoveAway;S;S_S;S;C;MoveToUnit;Enemy;"
+                + "Strongest;S;If_B_then_S;B;OpponentHasUnitThatKillsUnitInOneAttack;S;For_S;S;C;MoveToUnit;Ally;Closest;S;C;MoveToUnit;Enemy;Closest;S;C;Attack;Weakest;S;For_S;S;C;"
+                + "Build;Barracks;EnemyDir;9", f);
+    
+    this.strategyInterpreter = new Interpreter(m_utt,node, "2L");
+    
     }
 
     @Override
@@ -45,17 +49,14 @@ public class MyBot extends AIWithComputationBudget {
 
     @Override
     public PlayerAction getAction(int player, GameState gs) throws Exception {
-        this.algorithm.run(gs, 10);
         
-        Node_LS optimizedStrategy = this.algorithm.getLastOptimizedStrategy();
+        return this.strategyInterpreter.getAction(player, gs);
         
-       this.interpreter.setNode(optimizedStrategy);
-       
-       return this.interpreter.getAction(player, gs);
     }
 
 
     public AI clone() {
+       
         return new MyBot(m_utt);
     }
 

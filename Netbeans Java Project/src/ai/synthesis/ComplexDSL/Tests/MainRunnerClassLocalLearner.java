@@ -63,11 +63,11 @@ public class MainRunnerClassLocalLearner {
 		if(args[1].equals("7"))se= new Algoritmo1(new HC(coac,1500),3);
 		if(args[1].equals("8"))se= new Algoritmo1(new HC(coac,1500),1000);
 		*/
-		if(setting.equals("0"))se= new Algoritmo1( new HC(2000), new AvaliadorPadrao(1) ); //SA_1
-		if(setting.equals("1"))se= new Algoritmo1( new HC(2000), new AvaliadorPadrao(1000) ); //SA_inf
-                if(setting.equals("2")) se= new Algoritmo1( new HC(2000), new DO());
+		if(setting.equals("0"))se= new Algoritmo1( new HC(2000), new AvaliadorPadrao(1) ); //SA_1 IBR
+		if(setting.equals("1"))se= new Algoritmo1( new HC(2000), new AvaliadorPadrao(1000) ); //SA_inf  FP
+                if(setting.equals("2")) se= new Algoritmo1( new HC(2000), new DO()); //Double Oracle
                 //if(args[1].equals("3")) se= new Algoritmo1(new HC(2000),new CS_Orig_booster());	
-                if(setting.equals("3")) se= new Algoritmo1(new HC(2000),new CS_Default());	
+                if(setting.equals("3")) se= new Algoritmo1(new HC(2000),new CS_Default());	 //2L
                 
 //                if(setting.equals("0"))se= new Algoritmo1( new SA(2000,2000,0.9,0.5), new AvaliadorPadrao(1) ); //SA_1
 //		if(setting.equals("1"))se= new Algoritmo1( new SA(2000,2000,0.9,0.5), new AvaliadorPadrao(1000) ); //SA_inf

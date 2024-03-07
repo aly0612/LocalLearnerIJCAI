@@ -17,6 +17,9 @@ import ai.competition.dropletGNS.Droplet;
 import ai.competition.newBotsEval.botEmptyBase;
 import ai.mcts.naivemcts.NaiveMCTS;
 import ai.scv.SCV;
+import ai.synthesis.ComplexDSL.LS_CFG.FactoryLS;
+import ai.synthesis.ComplexDSL.LS_CFG.Node_LS;
+import ai.synthesis.ComplexDSL.Synthesis_Base.CFG.Control;
 import gui.PhysicalGameStatePanel;
 import java.io.OutputStreamWriter;
 import javax.swing.JFrame;
@@ -29,7 +32,7 @@ import util.XMLWriter;
 
 /**
  *
- * @author santi
+ * santi
  */
 public class GameVisualSimulationTest {
     public static void main(String args[]) throws Exception {
