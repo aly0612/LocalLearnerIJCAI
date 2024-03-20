@@ -4,24 +4,9 @@
  */
 package tournaments;
 
-import ai.RandomBiasedAI;
-import ai.abstraction.partialobservability.POLightRush;
-import ai.abstraction.partialobservability.POWorkerRush;
-import ai.competition.Aggrobot.Aggrobot;
-import ai.competition.Bezjak.Predator;
 import ai.competition.COAC.CoacAI;
-import ai.competition.MyMicroRtsBot.MyMicroRtsBot;
-import ai.competition.NIlSiBot.NIlSiBot;
-import ai.competition.ObiBotKenobi.ObiBotKenobi;
-import ai.competition.Ragnar.Ragnar;
-import ai.competition.SaveTheBeesV4.SaveTheBeesV4;
-import ai.competition.bRHEAdBot.RHEA.bRHEAdBot;
 import ai.competition.mayariBot.mayari;
-import ai.competition.myBotJonaEnis.myBot;
-import ai.competition.sophia.sophia;
 import ai.core.AI;
-import ai.mcts.naivemcts.NaiveMCTS;
-import ai.rai.RAISocketAI;
 import ai.synthesis.ComplexDSL.LS_CFG.FactoryLS;
 import ai.synthesis.ComplexDSL.LS_CFG.Node_LS;
 import ai.synthesis.ComplexDSL.Synthesis_Base.AIs.Interpreter;
@@ -52,7 +37,6 @@ public class performFixedTournamentRR {
         //selectedAIs.add((AI) new RandomBiasedAI());
         selectedAIs.add((AI) new CoacAI(utt));
         selectedAIs.add((AI) new mayari(utt));  
-        selectedAIs.add((AI) new RAISocketAI(utt));
         Node_LS node = (Node_LS) Control.load("S;For_S;S;S_S;S;S_S;S;C;Train;Worker;Right;2;S;C;Idle;S;S_S;S;S_S;S;C;Harvest;10;S;S_S;S;For_S;S;C;Idle;S;S_S;S;S_S;S;C;Train;Heavy;Down;7;S;If_B_then_S;B;HasUnitInOpponentRange;S;S_S;S;"
                 + "S_S;S;C;MoveToUnit;Enemy;MostHealthy;S;S_S;S;S_S;S;For_S;S;S_S;S;C;Harvest;1;S;S_S;S;C;Train;Light;EnemyDir;2;S;C;Train;Worker;"
                 + "Right;2;S;C;Attack;Farthest;S;C;MoveToUnit;Enemy;Closest;S;S_S;S;S_S;S;For_S;S;If_B_then_S;B;HasNumberOfWorkersHarvesting;100;S;C;MoveToUnit;"

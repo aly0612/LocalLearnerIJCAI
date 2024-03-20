@@ -23,7 +23,7 @@ import ai.synthesis.ComplexDSL.Synthesis_Base.CFG.Control;
 import gui.PhysicalGameStatePanel;
 import java.io.OutputStreamWriter;
 import javax.swing.JFrame;
-import mybot.MyBot;
+import rubensbot.RubensBot;
 import rts.GameState;
 import rts.PhysicalGameState;
 import rts.PlayerAction;
@@ -37,7 +37,7 @@ import util.XMLWriter;
 public class GameVisualSimulationTest {
     public static void main(String args[]) throws Exception {
         UnitTypeTable utt = new UnitTypeTable();
-        PhysicalGameState pgs = PhysicalGameState.load("maps/16x16/basesWorkers16x16.xml", utt);
+        PhysicalGameState pgs = PhysicalGameState.load("maps/8x8/basesWorkers8x8A.xml", utt);
 //        PhysicalGameState pgs = MapGenerator.basesWorkers8x8Obstacle();
 
         GameState gs = new GameState(pgs, utt);
@@ -45,7 +45,7 @@ public class GameVisualSimulationTest {
         int PERIOD = 20;
         boolean gameover = false;
         
-        AI ai2 = new MyBot(utt);
+        AI ai2 = new RubensBot(utt);
         //AI ai1 = new PGSmRTS(utt);
         //AI ai2 = new Droplet(utt);        
         AI ai1 = new LightRush(utt);

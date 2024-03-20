@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/jdom_lib/**/*.jar",
+            "/Users/austinly/Documents/Projects/microrts/microrts.jar",
+            "Netbeans Java Project/**/*.jar"
+        ],
+        "exclude": [
+            "Netbeans Java Project/lib/weka.jar",
+            "Netbeans Java Project/lib/jdom.jar"
+        ]
+    }
+}
